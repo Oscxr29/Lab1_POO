@@ -39,6 +39,8 @@ public class Student extends Person {
     public void setGpa(double gpa) {
         if (gpa >= 0.0 && gpa <= 4.0) {
             this.gpa = gpa;
+        } else {
+            throw new IllegalArgumentException("GPA debe estar entre 0.0 y 4.0");
         }
     }
 

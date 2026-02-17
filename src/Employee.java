@@ -55,7 +55,13 @@ public class Employee extends Person {
     public void giveRaise(double percentage) {
         if (percentage > 0) {
             salary += salary * (percentage / 100);
-            System.out.println("Nuevo salario: $" + salary);
         }
+    }
+
+    public double calculateRaise(double percentage) {
+        if (percentage > 0) {
+            return salary + (salary * (percentage / 100));
+        }
+        return salary;
     }
 }

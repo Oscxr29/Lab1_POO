@@ -42,8 +42,10 @@ public class Main {
 
         // Demostrar polimorfismo
         System.out.println("--- Polimorfismo ---");
-        System.out.println("Aumento de salario del 10%:");
+        System.out.println("Salario actual: $" + employee.getSalary());
         employee.giveRaise(10);
+        System.out.println("Aumento de salario del 10%");
+        System.out.println("Nuevo salario: $" + employee.getSalary());
         System.out.println();
 
         // Demostrar encapsulación
