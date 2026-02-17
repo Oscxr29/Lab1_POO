@@ -10,9 +10,9 @@ public class Employee extends Person {
     // Constructor
     public Employee(String name, int age, String id, String employeeId, String department, double salary) {
         super(name, age, id); // Llamada al constructor de la clase padre
-        this.employeeId = employeeId;
-        this.department = department;
-        setSalary(salary);  // Usar setter para validación
+        setEmployeeId(employeeId);    // Usar setter para validación
+        setDepartment(department);    // Usar setter para validación
+        setSalary(salary);            // Usar setter para validación
     }
 
     // Getters y Setters
@@ -21,7 +21,11 @@ public class Employee extends Person {
     }
 
     public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+        if (employeeId != null && !employeeId.trim().isEmpty()) {
+            this.employeeId = employeeId;
+        } else {
+            throw new IllegalArgumentException("El ID de empleado no puede estar vacío");
+        }
     }
 
     public String getDepartment() {
@@ -29,7 +33,11 @@ public class Employee extends Person {
     }
 
     public void setDepartment(String department) {
-        this.department = department;
+        if (department != null && !department.trim().isEmpty()) {
+            this.department = department;
+        } else {
+            throw new IllegalArgumentException("El departamento no puede estar vacío");
+        }
     }
 
     public double getSalary() {

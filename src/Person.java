@@ -10,9 +10,9 @@ public class Person {
 
     // Constructor
     public Person(String name, int age, String id) {
-        this.name = name;
-        setAge(age);  // Usar setter para validación
-        this.id = id;
+        setName(name);  // Usar setter para validación
+        setAge(age);    // Usar setter para validación
+        setId(id);      // Usar setter para validación
     }
 
     // Getters y Setters (encapsulación)
@@ -21,7 +21,11 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null && !name.trim().isEmpty()) {
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
     }
 
     public int getAge() {
@@ -41,7 +45,11 @@ public class Person {
     }
 
     public void setId(String id) {
-        this.id = id;
+        if (id != null && !id.trim().isEmpty()) {
+            this.id = id;
+        } else {
+            throw new IllegalArgumentException("El ID no puede estar vacío");
+        }
     }
 
     // Método que puede ser sobrescrito

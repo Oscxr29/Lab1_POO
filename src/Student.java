@@ -10,9 +10,9 @@ public class Student extends Person {
     // Constructor
     public Student(String name, int age, String id, String studentId, String major, double gpa) {
         super(name, age, id); // Llamada al constructor de la clase padre
-        this.studentId = studentId;
-        this.major = major;
-        setGpa(gpa);  // Usar setter para validación
+        setStudentId(studentId);  // Usar setter para validación
+        setMajor(major);          // Usar setter para validación
+        setGpa(gpa);              // Usar setter para validación
     }
 
     // Getters y Setters
@@ -21,7 +21,11 @@ public class Student extends Person {
     }
 
     public void setStudentId(String studentId) {
-        this.studentId = studentId;
+        if (studentId != null && !studentId.trim().isEmpty()) {
+            this.studentId = studentId;
+        } else {
+            throw new IllegalArgumentException("El ID de estudiante no puede estar vacío");
+        }
     }
 
     public String getMajor() {
@@ -29,7 +33,11 @@ public class Student extends Person {
     }
 
     public void setMajor(String major) {
-        this.major = major;
+        if (major != null && !major.trim().isEmpty()) {
+            this.major = major;
+        } else {
+            throw new IllegalArgumentException("La carrera no puede estar vacía");
+        }
     }
 
     public double getGpa() {
