@@ -12,7 +12,7 @@ public class Employee extends Person {
         super(name, age, id); // Llamada al constructor de la clase padre
         this.employeeId = employeeId;
         this.department = department;
-        this.salary = salary;
+        setSalary(salary);  // Usar setter para validación
     }
 
     // Getters y Setters
@@ -39,6 +39,8 @@ public class Employee extends Person {
     public void setSalary(double salary) {
         if (salary > 0) {
             this.salary = salary;
+        } else {
+            throw new IllegalArgumentException("El salario debe ser mayor a 0");
         }
     }
 
@@ -52,16 +54,22 @@ public class Employee extends Person {
     }
 
     // Método específico de Employee
+    private double calculateRaiseAmount(double percentage) {
+        return salary * (percentage / 100);
+    }
+
     public void giveRaise(double percentage) {
         if (percentage > 0) {
-            salary += salary * (percentage / 100);
+            salary += calculateRaiseAmount(percentage);
+        } else {
+            throw new IllegalArgumentException("El porcentaje debe ser mayor a 0");
         }
     }
 
     public double calculateRaise(double percentage) {
         if (percentage > 0) {
-            return salary + (salary * (percentage / 100));
+            return salary + calculateRaiseAmount(percentage);
         }
-        return salary;
+        throw new IllegalArgumentException("El porcentaje debe ser mayor a 0");
     }
 }

@@ -12,7 +12,7 @@ public class Student extends Person {
         super(name, age, id); // Llamada al constructor de la clase padre
         this.studentId = studentId;
         this.major = major;
-        this.gpa = gpa;
+        setGpa(gpa);  // Usar setter para validación
     }
 
     // Getters y Setters

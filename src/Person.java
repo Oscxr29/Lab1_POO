@@ -11,7 +11,7 @@ public class Person {
     // Constructor
     public Person(String name, int age, String id) {
         this.name = name;
-        this.age = age;
+        setAge(age);  // Usar setter para validación
         this.id = id;
     }
 
@@ -31,6 +31,8 @@ public class Person {
     public void setAge(int age) {
         if (age > 0) {
             this.age = age;
+        } else {
+            throw new IllegalArgumentException("La edad debe ser mayor a 0");
         }
     }
 
